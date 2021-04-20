@@ -1,0 +1,44 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: scwProject
+  datasource:
+    url: jdbc:mysql://localhost:3306/atcrowdfunding_1123?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: wgywgy
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    filters: stat  #开启监控过滤器
+  redis:
+    host: 192.168.188.128
+    port: 6379
+
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:com/offcn/project/mapper/*.xml
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+#日志配置
+logging:
+  file:
+    path: D:\\ExploitationTools\\idea_log\\springboot-log\\scw-project\\
+  level:
+    com:
+      offcn: debug
+oss:
+  endpoint: oss-cn-beijing.aliyuncs.com
+  bucketDomain: offcn1123-wgy.oss-cn-beijing.aliyuncs.com
+  accessKeyId: LTAI5tDNJ7L2UjW5q5xbyQEQ
+  accessKeySecret: ALsiezK45yZgzwce1CTutt3TzdCwf5
+  bucketName: offcn1123-wgy
+
+
+
+
+

@@ -1,0 +1,47 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: scwOrder
+  datasource:
+    url: jdbc:mysql://localhost:3306/atcrowdfunding_1123?serverTimezone=GMT%2B8&useSSL=false&useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: wgywgy
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    filters: stat #开启监控过滤器
+  redis:
+    host: 192.168.188.128
+    port: 6379
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:com/offcn/order/mapper/*.xml
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+
+#日志配置
+logging:
+  file:
+    path: E:\\logs\\scw-order\\
+  level:
+    com:
+      offcn: debug
+feign:
+  hystrix:
+    enabled: true
+  client:
+    config:
+      default:
+        connectTimeout: 2000  #连接超时时间2秒
+        readTimeout: 2000     #读超时时间2秒
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 20000 #设置熔断时间20秒
